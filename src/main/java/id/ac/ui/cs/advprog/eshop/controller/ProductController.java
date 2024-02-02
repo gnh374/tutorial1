@@ -9,7 +9,7 @@ import org.springframework.ui.Model;
 
 import java.util.List;
 @Controller
-@RequestMapping
+@RequestMapping("/product")
 public class ProductController {
     @Autowired
     private ProductService service;
