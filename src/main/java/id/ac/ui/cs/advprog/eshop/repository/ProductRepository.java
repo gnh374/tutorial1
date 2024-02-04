@@ -7,14 +7,26 @@ import java.util.Iterator;
 import java.util.List;
 @Repository
 public class ProductRepository {
+    private long idCounter=0;
     private  List<Product> productData = new ArrayList<>();
 
     public Product create(Product product){
+        product.setProductId(Long.toString(idCounter++));
         productData.add(product);
         return product;
     }
 
     public Iterator<Product> findAll(){
         return productData.iterator();
+    }
+
+    public void edit(Product editProduct){
+        int counter =0;
+        for(Product product:productData){
+            if(product.getProductId().equals(editProduct.getProductId())){
+                productData.set(counter,editProduct);
+            }
+            counter++;
+        }
     }
 }

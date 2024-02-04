@@ -25,4 +25,23 @@ public class ProductServiceImpl implements ProductService{
         productIterator.forEachRemaining(allProduct::add);
         return allProduct;
     }
+
+
+    public Product getProductById(String id) {
+        Iterator<Product> productIterator = productRepository.findAll();
+        while (productIterator.hasNext()){
+            Product product = productIterator.next();
+            if(product.getProductId().equals(id)){
+                return product;
+            }
+
+        }
+        return null;
+    }
+
+    public void edit(Product editProduct){
+        productRepository.edit(editProduct);
+    }
+
+
 }
