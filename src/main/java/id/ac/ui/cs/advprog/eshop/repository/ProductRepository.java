@@ -29,4 +29,12 @@ public class ProductRepository {
             counter++;
         }
     }
+    public void delete(String id){
+        for (int i=0; i<productData.size(); i++){
+            if (productData.get(i).getProductId().equals(id)){
+                productData.remove(i);
+            }
+            break;
+        }
+    }
 }

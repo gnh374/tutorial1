@@ -42,14 +42,13 @@ public class ProductController {
 
     @PostMapping("/edit")
     public String editProductPost(@ModelAttribute Product product, Model model){
-
-        System.out.println("============================");
-        System.out.println(product.getProductName());
-        System.out.println(product.getProductId());
-        System.out.println("==========================");
         service.edit(product);
         return "redirect:list";
     }
-
+    @GetMapping("/delete/{id}")
+    public String editProductPost(@PathVariable("id") String id, Model model){
+        service.deleteProduct(id);
+        return "redirect:../list";
+    }
 
 }
