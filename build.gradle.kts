@@ -56,6 +56,7 @@ tasks.register<Test>("functionalTest"){
 
 	filter {
 		includeTestsMatching("*FunctionalTest")
+		excludeTestsMatching("*ProductRepositoryTest*")
 	}
 }
 tasks.withType<Test>().configureEach {
