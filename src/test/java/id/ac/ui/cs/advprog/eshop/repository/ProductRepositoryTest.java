@@ -100,7 +100,7 @@ class ProductRepositoryTest {
 
     }
     @Test
-    void testpositifDelete(){
+    void testPositifDelete(){
         Product product = new Product();
         product.setProductName("Sampo Cap Bambang");
         product.setProductQuantity(100);
@@ -114,7 +114,7 @@ class ProductRepositoryTest {
     }
 
     @Test
-    void testnegatifDelete(){
+    void testNegatifDelete(){
         Product product = new Product();
         product.setProductName("Sampo Cap Bambang");
         product.setProductQuantity(100);
