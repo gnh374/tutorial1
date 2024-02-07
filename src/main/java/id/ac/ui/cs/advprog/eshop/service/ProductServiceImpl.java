@@ -28,15 +28,7 @@ public class ProductServiceImpl implements ProductService{
 
 
     public Product getProductById(String id) {
-        Iterator<Product> productIterator = productRepository.findAll();
-        while (productIterator.hasNext()){
-            Product product = productIterator.next();
-            if(product.getProductId().equals(id)){
-                return product;
-            }
-
-        }
-        return null;
+        return productRepository.getProductById(id);
     }
 
     public void edit(Product editProduct){
