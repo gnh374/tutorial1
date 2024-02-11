@@ -4,6 +4,7 @@ val webdrivermanagerVersion="5.6.3"
 val junitJupiterVersion = "5.9.1"
 plugins {
 	java
+	jacoco
 	id("org.springframework.boot") version "3.2.2"
 	id("io.spring.dependency-management") version "1.1.4"
 }
@@ -61,4 +62,14 @@ tasks.register<Test>("functionalTest"){
 }
 tasks.withType<Test>().configureEach {
 	useJUnitPlatform()
+}
+tasks.test{
+	filter{
+		excludeTestsMatching("*FunctionalTest")
+	}
+	finalizedBy(tasks.jacocoTestReport)
+}
+
+tasks.jacocoTestReport{
+	dependsOn(tasks.test)
 }
