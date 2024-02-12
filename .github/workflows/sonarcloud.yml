@@ -16,5 +16,5 @@ jobs:
         with:
 
           args:
-            -Dsonar.projectKey="gnh374_tutorial1"
-            -Dsonar.organization="gnh374"
+            -Dsonar.projectKey=gnh374_tutorial1
+            -Dsonar.organization=gnh374
