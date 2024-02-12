@@ -34,7 +34,6 @@ public class ProductRepository {
             if (productData.get(i).getProductId().equals(id)){
                 return productData.remove(i);
             }
-            break;
         }
         return null;
     }
@@ -45,7 +44,6 @@ public class ProductRepository {
                 System.out.println(productData.get(i).getProductName());
                 return productData.get(i);
             }
-            break;
         }
         return null;
     }
