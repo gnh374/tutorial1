@@ -24,7 +24,8 @@ jobs:
           distribution: "temurin"
           java-version: "21"
           cache: "gradle"
-
+      - name: Permission Gradle
+        run: chmod +x ./gradlew
       - name: Build with Gradle
         run: ./gradlew build
 
