@@ -1,20 +1,48 @@
-name: SonarCloud
+name: SonarCloud analysis
+
 on:
   push:
+    branches: [ "*" ]
   pull_request:
-    types: [opened, synchronize, reopened]
+    branches: [ "*" ]
+  workflow_dispatch:
+
+permissions:
+  pull-requests: read # allows SonarCloud to decorate PRs with analysis results
+
 jobs:
   Analysis:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Check out the Git repository
+        uses: actions/checkout@v4
+
+      - name: Set up Java toolchain
+        uses: actions/setup-java@v4
+        with:
+          distribution: "temurin"
+          java-version: "21"
+          cache: "gradle"
+      - name: Permission Gradle
+        run: chmod +x ./gradlew
+      - name: Build with Gradle
+        run: ./gradlew build
+
       - name: Analyze with SonarCloud
+
+        # You can pin the exact commit or the version.
         uses: SonarSource/sonarcloud-github-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}   # Generate a token on Sonarcloud.io, add it to the secrets of this repo with the name SONAR_TOKEN (Settings > Secrets > Actions > add new repository secret)
         with:
-
+          # Additional arguments for the sonarcloud scanner
           args:
+            # Unique keys of your project and organization. You can find them in SonarCloud > Information (bottom-left menu)
+            # mandatory
             -Dsonar.projectKey=gnh374_tutorial1
             -Dsonar.organization=gnh374
+            -Dsonar.java.binaries=.
+            -Dsonar.sources=src/main/java
+            -Dsonar.tests=src/test/java
