@@ -86,12 +86,12 @@ class ProductRepositoryTest {
     @Test
     void testNegativeEdit(){
         Product product = new Product();
-        product.setProductName("Sampo Cap Bambang");
-        product.setProductQuantity(100);
+        product.setProductName("Baru");
+        product.setProductQuantity(18);
         product.setProductId("id");
 
         productRepository.edit(product);
-        Product product1 = productRepository.getProductById("id");
+        Product product1 = productRepository.getProductById("idBaru");
         assertNull(product1);
 
     }
