@@ -41,7 +41,6 @@ public class ProductRepository {
     public Product  getProductById(String id){
         for (int i=0; i<productData.size(); i++){
             if (productData.get(i).getProductId().equals(id)){
-                System.out.println(productData.get(i).getProductName());
                 return productData.get(i);
             }
         }

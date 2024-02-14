@@ -20,3 +20,12 @@ Saya menggunakan methode post untuk membuat produk baru melalui form
 - 100% code coverage tidak menjamin tidak adanya bugs dan error. Bisa jadi ada edge case yang belum dihandle oleh test yang dibuat
 
 - Menurut saya kode akan menjadi kurang bersih karena pasti akan banyak kode yang berulang seperti pada bagian setup. Solusinya adalah dengan cukup membuat methode test baru pada kelas sebelumnya sehingga bisa menggunakan setup yang sama.
+
+# Refleksi 3
+- ### Quality issue(s)
+  - Ada break dalam for loop yang menyebabkan loop pasti hanya berjalan sekali. Solusi : menghapus break
+  - Menggunakan System.out.println() untuk debug. Solusi menghapus System.out.println()
+
+- ### Penerapa CI/CD
+    - Menurut saya, proyek ini sudah menerapkan CI/CD. Hal ini karena saya menggunakan github action untuk menjalankan workflow ci.yml, scorecard.yml, dan sonarcloud.yml yang akan secara otomatis menjalankan testing jika dilakukan suatu tindakan push atau pull request ke suatu branch. Hal ini merupakan penerapan CI dalam proyek ini. Selain itu, saya menggunakan platform Koyeb yang secara otomatis akan menjalankan deployment jika ada push atau pull request pada repository Github. Hal ini merupakan penerapa CD dalam proyek ini
+  
