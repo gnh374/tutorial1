@@ -81,7 +81,6 @@ class ProductRepositoryTest {
         assertEquals(product1.getProductName(),"namaBaru");
         assertEquals(product1.getProductQuantity(),9);
 
-//
     }
 
     @Test
@@ -89,13 +88,10 @@ class ProductRepositoryTest {
         Product product = new Product();
         product.setProductName("Sampo Cap Bambang");
         product.setProductQuantity(100);
-        productRepository.create(product);
-
         product.setProductId("id");
-        product.setProductName("namaBaru");
-        product.setProductQuantity(9);
+
         productRepository.edit(product);
-        Product product1 = productRepository.getProductById("random");
+        Product product1 = productRepository.getProductById("id");
         assertNull(product1);
 
     }
