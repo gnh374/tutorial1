@@ -27,7 +27,9 @@ public class ProductRepository {
                 productData.set(counter,editProduct);
             }
             counter++;
+
         }
+
     }
     public Product delete(String id){
         for (int i=0; i<productData.size(); i++){
