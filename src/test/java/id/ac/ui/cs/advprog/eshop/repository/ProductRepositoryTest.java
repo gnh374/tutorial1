@@ -18,6 +18,29 @@ class ProductRepositoryTest {
 
     }
     @Test
+    void testNegativeEdit(){
+        Product product = new Product();
+        product.setProductName("Baru");
+        product.setProductQuantity(18);
+        product.setProductId("id");
+
+        productRepository.edit(product);
+        Product product1 = productRepository.getProductById("id");
+        assertNull(product1);
+
+    }
+    @Test
+    void testNegatifDelete(){
+        Product product = new Product();
+        product.setProductName("Sampo Cap Bambang");
+        product.setProductQuantity(100);
+        productRepository.create(product);
+        Product product1 = productRepository.delete("random id");
+        assertNull(product1);
+
+
+    }
+    @Test
     void testCreateAndFind(){
         Product product = new Product();
         product.setProductId("ab558e9f-1c39-460e-8860-71af6af63bd6");
@@ -83,18 +106,8 @@ class ProductRepositoryTest {
 
     }
 
-    @Test
-    void testNegativeEdit(){
-        Product product = new Product();
-        product.setProductName("Baru");
-        product.setProductQuantity(18);
-        product.setProductId("id");
 
-        productRepository.edit(product);
-        Product product1 = productRepository.getProductById("idBaru");
-        assertNull(product1);
 
-    }
     @Test
     void testPositifDelete(){
         Product product = new Product();
@@ -109,17 +122,7 @@ class ProductRepositoryTest {
 
     }
 
-    @Test
-    void testNegatifDelete(){
-        Product product = new Product();
-        product.setProductName("Sampo Cap Bambang");
-        product.setProductQuantity(100);
-        productRepository.create(product);
-        Product product1 = productRepository.delete("random id");
-        assertNull(product1);
 
-
-    }
 
 
 }
