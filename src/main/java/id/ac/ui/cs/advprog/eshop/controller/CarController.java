@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import id.ac.ui.cs.advprog.eshop.controller.ProductController;
+import id.ac.ui.cs.advprog.eshop.service.CarService;
+
 
 import java.util.List;
 
@@ -14,7 +16,7 @@ import java.util.List;
 @RequestMapping("/car")
 public class CarController extends ProductController {
     @Autowired
-    private CarServiceImpl carservice;
+    private CarService carservice;
 
     @GetMapping("/createCar")
     public String createCarPage(Model model) {
