@@ -29,15 +29,4 @@ Saya menggunakan methode post untuk membuat produk baru melalui form
 - ### Penerapa CI/CD
     - Menurut saya, proyek ini sudah menerapkan CI/CD. Hal ini karena saya menggunakan github action untuk menjalankan workflow ci.yml, scorecard.yml, dan sonarcloud.yml yang akan secara otomatis menjalankan testing jika dilakukan suatu tindakan push atau pull request ke suatu branch. Hal ini merupakan penerapan CI dalam proyek ini. Selain itu, saya menggunakan platform Koyeb yang secara otomatis akan menjalankan deployment jika ada push atau pull request pada repository Github. Hal ini merupakan penerapan CD dalam proyek ini
 
-# Refleksi 4
-### Penerapan SOLID
 
-- #### SRP(Single Responsibility Principle)
-Prinsip SRP adalah prinsip yang mengatakan bahwa sebuah kelas harus hanya bertanggung jawab pada 1 komponen dalam program. Menurut saya, code saya sudah menerapkan prinsip ini karena saya memisahkan kelas Controller menjadi 3 kelas berdasarkan halamannya yaitu CarController, HomePageController, ProductController. Selain itu saya juga memisahkan respository menjadi CarRepository yang nantinya akan berhubungan dengan data Car dan ProductRepository yang nantinya akan berhubungan dengan data Product. Saya juga memisahkan kelas service yang menangani permintaan dari masing-masing controller sehingga setiap controller akan ditangani oleh masing-masing kelas.
-- #### OCP(Open-Closed Principle)
-Prinsip ini mengatakan bahwa software entities harus terbuka untuk pengembangan namun tertutup dengan modifikasi. Menurut saya code saya sudah menerapkan hal ini yaitu pada bagian controller. Pada saat saya ingin membuat controller untuk Car saya tidak mengubah kelas product Controller namun mengextend kelas ini dan membuat kelas CarController.
-- #### LSP (Liskov Subtitution Principle)
-Prinsip ini mengatakan bahwa objek superclass harus bisa digantikan oleh objek dari subclass tanpa membuat error. Code saya sudah menerapkan prinsip ini yaitu pada kelas repository attribute servicenya merupakan interface namun yang digunakan adalah kelas implementasinya yaitu serviceimpl
-- #### ISP (Interface Segregation Principle)
-Prinsip ini menekankan untuk memecah interface yang besar menjadi interface yang lebih kecil sehingga kelas implementasinya hanya mengambil methode yang relevan. Menurut saya, code saya sudah mengimplementasikan prinsip ini dengan memecah interface ProductService dan interface CarService.
-- #### DIP (Dependency Inversion Principle)
