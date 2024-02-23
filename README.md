@@ -33,24 +33,24 @@ Saya menggunakan methode post untuk membuat produk baru melalui form
 ### Penerapan SOLID
 
 - #### SRP(Single Responsibility Principle)
-Prinsip SRP adalah prinsip yang mengatakan bahwa sebuah kelas harus hanya bertanggung jawab pada 1 komponen dalam program. Menurut saya, code saya sudah menerapkan prinsip ini karena saya memisahkan kelas Controller menjadi 3 kelas berdasarkan halamannya yaitu CarController, HomePageController, ProductController. Selain itu saya juga memisahkan respository menjadi CarRepository yang nantinya akan berhubungan dengan data Car dan ProductRepository yang nantinya akan berhubungan dengan data Product. Saya juga memisahkan kelas service yang menangani permintaan dari masing-masing controller sehingga setiap controller akan ditangani oleh masing-masing kelas.
+Prinsip SRP adalah prinsip yang mengatakan bahwa sebuah kelas harus hanya bertanggung jawab pada 1 komponen dalam program. Menurut saya, code saya sudah menerapkan prinsip ini karena saya memisahkan kelas Controller menjadi 3 kelas berdasarkan halamannya yaitu CarController, HomePageController, ProductController. Saya juga menghapus extends productController pada CarController agar kelas CarController berfokus pada Car saja. Selain itu saya juga memisahkan respository menjadi CarRepository yang nantinya akan berhubungan dengan data Car dan ProductRepository yang nantinya akan berhubungan dengan data Product. Saya juga memisahkan kelas service yang menangani permintaan dari masing-masing controller sehingga setiap controller akan ditangani oleh masing-masing kelas.
 - #### OCP(Open-Closed Principle)
-Prinsip ini mengatakan bahwa software entities harus terbuka untuk pengembangan namun tertutup dengan modifikasi. Menurut saya code saya sudah menerapkan hal ini yaitu pada bagian controller. Pada saat saya ingin membuat controller untuk Car saya tidak mengubah kelas product Controller namun mengextend kelas ini dan membuat kelas CarController.
+Prinsip ini mengatakan bahwa software entities harus terbuka untuk pengembangan namun tertutup dengan modifikasi. Saya menerapkan hal ini dengan mengubah bagian method update pada kelas CarRepository yang awalnya melakukan set pada setiap atribut menjadi mengganti object yang ada pada list. Hal ini dilakukan agar jika kita membuat subclass Car atau ada attribut Car yanng kita ubah bisa memanfaatkan CarRepository ini.
 - #### LSP (Liskov Subtitution Principle)
-Prinsip ini mengatakan bahwa objek superclass harus bisa digantikan oleh objek dari subclass tanpa membuat error dalam artian subclass harus memiliki behaviour yang serupa dengan superclass. Code saya sudah menerapkan hal ini yaitu pada CarController yang inherit ProductController dimana CarController memiliki behavior yang sama dengan ProductController
+Prinsip ini mengatakan bahwa objek superclass harus bisa digantikan oleh objek dari subclass tanpa membuat error dalam artian subclass harus memiliki behaviour yang serupa dengan superclass. Prinsip ini berlaku jika kita menerapkan inheritence dan code saya tidak menerapkan prinsip inheritence ini sehingga saya simpulkan code saya tidak melanggar prinsip ini.
 - #### ISP (Interface Segregation Principle)
 Prinsip ini menekankan untuk memecah interface yang besar menjadi interface yang lebih kecil sehingga kelas implementasinya hanya mengambil methode yang relevan. Menurut saya, code saya sudah mengimplementasikan prinsip ini dengan memecah interface ProductService dan interface CarService.
 - #### DIP (Dependency Inversion Principle)
 Prinsip ini mengatakan bahwa suatu class seharusnya bergantung pada abstraksi bukan kepada kelas concretenya. Code saya sudah menerapkan prinsip ini yaitu kelas CarController dan ProductController bergantung pada interface CarService dan ProductService bukan pada kelas implementasinya
 
 ### Keuntungan menerapkan prinsip SOLID:
-- Code jadi lebih mudah di maintain
-- Code jadi lebih mudah dibaca
-- Code jadi lebih mudah ditest
-- Code jadi lebih mudah dikelola
+- Code jadi lebih mudah dimaintain, karena teradi pemisahan tujuan setiap kelas 
+- Code jadi lebih mudah dibaca,  saat kita membaca kelas CarController kita tahu bahwa ini mapping yang berhubungan dengan objek Car
+- Code jadi lebih mudah ditest, saat kita ingin melakukan test kelas CarController, kita bisa yakin bahwa depedencynya berhubungan dengan Car saja
+- Code jadi lebih mudah dikelola, Saat kita ingin mengganti yang berhubungan dengan logic bisnis dari Car, kita hanya perlu menggantu kelas CarService
 
 ### Kerugian menerapkan prinsip SOLID:
-- meningkatkan kompleksitas code
-- Terdapat banyak kelas dan interface
-- Sulit untuk dipahami
-- Menjadi butuh lebih banyak waktu dalam pengembangan
+- meningkatkan kompleksitas code, karena banyak melakukan pemisahan file
+- Terdapat banyak kelas dan interface,setiap kelas serviceimplementation jadi harus memiliki interface service
+- Sulit untuk dipahami, karena semakin banyak pemisahan dan semakin banyak file
+- Menjadi butuh lebih banyak waktu dalam pengembangan, karena memperhatikan banyak hal tidak hanya fungsionalitas
