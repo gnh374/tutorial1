@@ -6,15 +6,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import id.ac.ui.cs.advprog.eshop.controller.ProductController;
+import id.ac.ui.cs.advprog.eshop.service.CarService;
+
 
 import java.util.List;
 
 @Controller
 @RequestMapping("/car")
-public class CarController extends ProductController {
+public class CarController{
     @Autowired
-    private CarServiceImpl carservice;
+    private CarService carservice;
 
     @GetMapping("/createCar")
     public String createCarPage(Model model) {
