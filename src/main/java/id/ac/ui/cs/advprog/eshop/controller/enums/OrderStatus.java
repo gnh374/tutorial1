@@ -1,4 +1,4 @@
-package enums;
+package id.ac.ui.cs.advprog.eshop.controller.enums;
 
 public enum OrderStatus {
     WAITINGPAYMENT("WAITING_PAYMENT"),
