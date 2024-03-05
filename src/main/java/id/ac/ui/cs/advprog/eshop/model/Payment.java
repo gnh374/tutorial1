@@ -1,6 +1,7 @@
 package id.ac.ui.cs.advprog.eshop.model;
 
 import id.ac.ui.cs.advprog.eshop.enums.OrderStatus;
+import id.ac.ui.cs.advprog.eshop.enums.PaymentStatus;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -42,15 +43,15 @@ public class Payment {
     private String validateVoucherCode() {
         String voucherCode = this.paymentData.get("voucherCode");
         if (voucherCode == null) {
-            return "REJECTED";
+            return PaymentStatus.REJECTED.getValue();
         }
 
         if (voucherCode.length() != 16) {
-            return "REJECTED";
+            return PaymentStatus.REJECTED.getValue();
         }
 
         if (!voucherCode.startsWith("ESHOP")) {
-            return "REJECTED";
+            return PaymentStatus.REJECTED.getValue();
         }
 
         int count = 0;
@@ -60,11 +61,11 @@ public class Payment {
             }
         }
         if (count != 8) {
-            return "REJECTED";
+            return PaymentStatus.REJECTED.getValue();
         }
 
         this.order.setStatus(OrderStatus.SUCCESS.getValue());
-        return "SUCCESS";
+        return PaymentStatus.SUCCESS.getValue();
     }
 
     private String validateBankPayment() {
@@ -72,9 +73,9 @@ public class Payment {
         String referenceCode = this.paymentData.get("referenceCode");
 
         if (bankName==null|| referenceCode ==null) {
-            return "REJECTED";
+            return PaymentStatus.REJECTED.getValue();
         }
-        return "SUCCESS";
+        return PaymentStatus.SUCCESS.getValue();
     }
 }
 
