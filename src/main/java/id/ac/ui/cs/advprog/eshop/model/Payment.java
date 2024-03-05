@@ -1,5 +1,6 @@
 package id.ac.ui.cs.advprog.eshop.model;
 
+import id.ac.ui.cs.advprog.eshop.enums.OrderStatus;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,7 +10,6 @@ import java.util.Map;
 public class Payment {
     String id;
     String method;
-    @Setter
     String status;
     Order order;
     Map<String, String> paymentData;
@@ -63,6 +63,7 @@ public class Payment {
             return "REJECTED";
         }
 
+        this.order.setStatus(OrderStatus.SUCCESS.getValue());
         return "SUCCESS";
     }
 
