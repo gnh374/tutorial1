@@ -3,12 +3,12 @@ package id.ac.ui.cs.advprog.eshop.model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.*;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
+import id.ac.ui.cs.advprog.eshop.model.Payment;
+
 /** id: String
  method: String to save a sub-feature name.
  status: String
@@ -57,7 +57,7 @@ public class PaymentTest {
     }
     @Test
     void testCreatePaymentEmptyOrder(){
-        Map<String, String> paymentDataVoucher = new  HashMap<>();
+        Map<String, String> paymentDataVoucher = new HashMap<>();
         assertThrows(IllegalArgumentException.class, ()->{
            Payment payment = new Payment("0176dc9d-3381-4b14-8705-8f66a8b86acf",null,
                    "VOUCHER", paymentDataVoucher);
