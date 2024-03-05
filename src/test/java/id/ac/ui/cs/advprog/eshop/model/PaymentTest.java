@@ -66,6 +66,7 @@ public class PaymentTest {
     @Test
     void testCreatePaymentSuccessfullWithOrder(){
         Map<String, String> paymentData = new  HashMap<>();
+        paymentData.put("voucherCode", "ESHOP1234ABC5678");
         Payment payment = new Payment("0176dc9d-3381-4b14-8705-8f66a8b86acf",order,"VOUCHER", paymentData);
         assertNotNull(payment.getOrder());
 
@@ -79,6 +80,8 @@ public class PaymentTest {
     @Test
     void testCreatePaymentBankMethod(){
         Map<String, String> paymentData = new  HashMap<>();
+        paymentData.put("bankName", "ABC");
+        paymentData.put("referenceCode", "123");
         Payment payment = new Payment("0176dc9d-3381-4b14-8705-8f66a8b86acf",order,"BANK", paymentData);
         assertEquals("BANK", payment.getMethod());
     }
@@ -126,12 +129,14 @@ public class PaymentTest {
     void InvalidBankPaymentDataNoBankName(){
         Map<String, String> paymentData = new  HashMap<>();
         paymentData.put("bankName", "ABC");
+        paymentData.put("referenceCode", "123");
         Payment payment = new Payment("0176dc9d-3381-4b14-8705-8f66a8b86acf",order,"BANK", paymentData);
         assertEquals("REJECTED", payment.getStatus());
     }
     @Test
     void InvalidBankPaymentDataNoCode(){
         Map<String, String> paymentData = new  HashMap<>();
+        paymentData.put("bankName", "ABC");
         paymentData.put("referenceCode", "123");
         Payment payment = new Payment("0176dc9d-3381-4b14-8705-8f66a8b86acf",order,"BANK", paymentData);
         assertEquals("REJECTED", payment.getStatus());

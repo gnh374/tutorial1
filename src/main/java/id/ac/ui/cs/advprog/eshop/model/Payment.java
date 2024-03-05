@@ -25,14 +25,17 @@ public class Payment {
     public void setStatus() {
         if (this.method.equals("VOUCHER")) {
             if (!this.paymentData.containsKey("voucherCode")) {
-                throw new IllegalArgumentException("Invalid");
+                throw new IllegalArgumentException("Invalid Payment Data");
             }
             this.status = validateVoucherCode();
         } else if (this.method.equals("BANK")) {
             if (!this.paymentData.containsKey("bankName")|| !this.paymentData.containsKey("referenceCode")) {
-                throw new IllegalArgumentException("Invalid");
+                throw new IllegalArgumentException("Invalid Payment Data");
             }
             this.status = validateBankPayment();
+        }
+        else{
+            throw new IllegalArgumentException("Invalid Method");
         }
     }
 
