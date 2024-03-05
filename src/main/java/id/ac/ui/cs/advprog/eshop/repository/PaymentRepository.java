@@ -32,13 +32,7 @@ public class PaymentRepository {
         return null;
     }
     public List<Payment> getAllPayment(){
-        List<Payment> result = new ArrayList<>();
-        for (Payment savedPayment : paymentData){
-            result.add(savedPayment);
-        }
-        return result;
+        return paymentData;
     }
-
-
 
 }
