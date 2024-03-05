@@ -9,7 +9,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 @Repository
 public class PaymentRepository {
-    private List<Payment> paymentData = new ArrayList<>();
+    private List<Payment> paymentData = new CopyOnWriteArrayList<>();
     public Payment save(Payment payment){
         int i =0;
         for (Payment savedPayment : paymentData ) {
