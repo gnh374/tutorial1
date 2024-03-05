@@ -1,7 +1,5 @@
 package id.ac.ui.cs.advprog.eshop.repository;
 
-
-import id.ac.ui.cs.advprog.eshop.enums.OrderStatus;
 import id.ac.ui.cs.advprog.eshop.model.Order;
 import id.ac.ui.cs.advprog.eshop.model.Payment;
 import id.ac.ui.cs.advprog.eshop.model.Product;
@@ -59,11 +57,11 @@ public class PaymentRepositoryTest {
     @Test
     void testSveCreate(){
         Payment payment1 = payments.get(1);
-        Payment result = PaymentRepository.save(payment1);
-        Payment findResult = PaymentRepository.findById(orders.get(1).getId());
+        Payment result = paymentRepository.save(payment1);
+        Payment findResult = paymentRepository.findById(payment1.getId());
         assertEquals(payment1.getId(), result.getId());
         assertEquals(payment1.getId(), findResult.getId());
-        assertEquals(payment1.getMethod(), findResult.geMethod());
+        assertEquals(payment1.getMethod(), findResult.getMethod());
         assertEquals(payment1.getPaymentData(), findResult.getPaymentData());
         assertEquals(payment1.getStatus(), findResult.getStatus());
     }
@@ -93,7 +91,7 @@ public class PaymentRepositoryTest {
 
         Payment findResult = paymentRepository.findById(payments.get(1).getId());
         assertEquals(payments.get(1).getId(), findResult.getId());
-        assertEquals(payments.get(1).getMethod(), findResult.getMethod())
+        assertEquals(payments.get(1).getMethod(), findResult.getMethod());
         assertEquals(payments.get(1).getOrder(), findResult.getOrder());
         assertEquals(payments.get(1).getPaymentData(), findResult.getPaymentData());
         assertEquals(payments.get(1).getStatus(), findResult.getStatus());
@@ -118,7 +116,6 @@ public class PaymentRepositoryTest {
         for (Payment payment: payments) {
             paymentRepository.save(payment);
         }
-
         List<Payment> paymentList = paymentRepository.getAllPayment();
         assertEquals(2, paymentList.size());
     }
