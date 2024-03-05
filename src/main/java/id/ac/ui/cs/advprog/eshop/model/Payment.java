@@ -64,7 +64,7 @@ public class Payment {
             return PaymentStatus.REJECTED.getValue();
         }
 
-        this.order.setStatus(OrderStatus.SUCCESS.getValue());
+
         return PaymentStatus.SUCCESS.getValue();
     }
 
