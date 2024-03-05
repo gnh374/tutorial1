@@ -74,6 +74,7 @@ public class PaymentTest {
     @Test
     void testCreatePaymentVoucherMethod(){
         Map<String, String> paymentData = new  HashMap<>();
+        paymentData.put("voucherCode", "ESHOP1234ABC5678");
         Payment payment = new Payment("0176dc9d-3381-4b14-8705-8f66a8b86acf",order,"VOUCHER", paymentData);
         assertEquals("VOUCHER", payment.getMethod());
     }
@@ -128,16 +129,33 @@ public class PaymentTest {
     @Test
     void InvalidBankPaymentDataNoBankName(){
         Map<String, String> paymentData = new  HashMap<>();
-        paymentData.put("bankName", "ABC");
         paymentData.put("referenceCode", "123");
-        Payment payment = new Payment("0176dc9d-3381-4b14-8705-8f66a8b86acf",order,"BANK", paymentData);
-        assertEquals("REJECTED", payment.getStatus());
+        assertThrows(IllegalArgumentException.class, ()->{
+            Payment payment = new Payment("0176dc9d-3381-4b14-8705-8f66a8b86acf",order,"BANK", paymentData);
+        });
     }
     @Test
     void InvalidBankPaymentDataNoCode(){
         Map<String, String> paymentData = new  HashMap<>();
         paymentData.put("bankName", "ABC");
+        assertThrows(IllegalArgumentException.class, ()->{
+            Payment payment = new Payment("0176dc9d-3381-4b14-8705-8f66a8b86acf",order,"BANK", paymentData);
+        });
+    }
+
+    @Test
+    void InvalidBankPaymentDataBankNameIsNull(){
+        Map<String, String> paymentData = new  HashMap<>();
+        paymentData.put("bankName", null);
         paymentData.put("referenceCode", "123");
+        Payment payment = new Payment("0176dc9d-3381-4b14-8705-8f66a8b86acf",order,"BANK", paymentData);
+        assertEquals("REJECTED", payment.getStatus());
+    }
+    @Test
+    void InvalidBankPaymentDataCodeIsNull(){
+        Map<String, String> paymentData = new  HashMap<>();
+        paymentData.put("referenceCode", null);
+        paymentData.put("bankName", "ABC");
         Payment payment = new Payment("0176dc9d-3381-4b14-8705-8f66a8b86acf",order,"BANK", paymentData);
         assertEquals("REJECTED", payment.getStatus());
     }
