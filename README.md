@@ -54,3 +54,19 @@ Prinsip ini mengatakan bahwa suatu class seharusnya bergantung pada abstraksi bu
 - Terdapat banyak kelas dan interface,setiap kelas serviceimplementation jadi harus memiliki interface service
 - Sulit untuk dipahami, karena semakin banyak pemisahan dan semakin banyak file
 - Menjadi butuh lebih banyak waktu dalam pengembangan, karena memperhatikan banyak hal tidak hanya fungsionalitas
+
+# Refleksi 5
+1. Menurut saya metode TDD ini sebenarnya adalah metode yang baik. Dengan menuliskan test terlebih dahulu, saya jadi dipaksa untuk memikirkan desain yang lebih baik dan memastikan bahwa kode yang saya tulis diuji dengan baik.
+Namun, karena saya belum terbiasa dengan springboot serta testing, dalam tugas ini saya merasa metode TDD ini justru sedikit menghambat karena saya tidak tahu test apa yang harus saya buat.
+
+2. Menurut saya, unit test dalam program ini sudah memenuhi F.I.R.S.T principle:
+
+  Fast : unit test dalam program ini  berjalan dengan cepat, hal ini karena setiap unit test tidak bergantung pada resource lain
+
+  Isolated: unit test dalam program ini tidak bergantung atau mempengaruhi test lain. Saya memastikan hal ini dengan menerapkan metode setup untuk setiap unit test
+
+  Repeatable: Setiap kali saya menjalankan unit tets (setelah membuat program berhasil lolos dari semua unit test) , hasilnya selalu sama dan tetap berhasil
+
+  Self-Validating: Setiap unit test dalam program ini dengan jelas memberi tahukan apakah test ini fail atau pass
+
+  Timely: Semua test dalam program ini dibuat sebelum implementasi sehingga memenuhi prinsip ini
